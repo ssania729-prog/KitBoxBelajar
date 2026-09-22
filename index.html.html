@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KitBelajar - Katering Belajar Anak</title>
+    <!-- Google Fonts untuk kesan elegan dan modern -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            /* Palette Aesthetic (Earth tones, Pastel, Clean) */
+            --bg-color: #FAF8F5;        /* Warm Ivory */
+            --surface: #FFFFFF;         /* White */
+            --primary: #C58973;         /* Soft Terracotta / Rose */
+            --primary-hover: #b07863;
+            --secondary: #9EB3A2;       /* Sage Green */
+            --accent: #E8D8CE;          /* Sand/Beige */
+            --text-main: #5C5C5C;       /* Soft Charcoal */
+            --text-heading: #2E3333;    /* Dark Slate */
+        }
+        
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        body { 
+            font-family: 'Montserrat', sans-serif; 
+            background-color: var(--bg-color); 
+            color: var(--text-main); 
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Lora', serif;
+            color: var(--text-heading);
+            font-weight: 500;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* --- Navbar Minimalis --- */
+        header {
+            padding: 30px 0;
+            background: transparent;
+            display: flex;
+            justify-content: center;
+        }
+        .logo {
+            font-family: 'Lora', serif;
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: var(--primary);
+            letter-spacing: -0.5px;
+            text-decoration: none;
+        }
+        .logo span {
+            color: var(--secondary);
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+            padding: 60px 0 100px 0;
+        }
+        .hero-content {
+            flex: 1;
+            padding-right: 20px;
+        }
+        .hero-tag {
+            display: inline-block;
+            background-color: var(--accent);
+            color: var(--primary);
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+        .hero-content h1 {
+            font-size: 3.2rem;
+            line-height: 1.2;
+            margin-bottom: 24px;
+        }
+        .hero-content p {
+            font-size: 1.1rem;
+            margin-bottom: 32px;
+            color: #666;
+        }
+        .hero-image {
+            flex: 1;
+            position: relative;
+        }
+        .hero-image img {
+            width: 100%;
+            height: auto;
+            border-radius: 24px 120px 24px 24px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.06);
+            object-fit: cover;
+            aspect-ratio: 4/3;
+        }
+        /* Aesthetic background blob */
+        .hero-image::before {
+            content: '';
+            position: absolute;
+            top: -20px;
+            right: -20px;
+            bottom: 20px;
+            left: 20px;
+            background-color: var(--secondary);
+            border-radius: 24px 120px 24px 24px;
+            z-index: -1;
+            opacity: 0.3;
+        }
+
+        /* --- Buttons --- */
+        .btn {
+            display: inline-block;
+            background-color: var(--primary);
+            color: white;
+            padding: 16px 36px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-family: 'Montserrat', sans-serif;
+            box-shadow: 0 8px 20px rgba(197, 137, 115, 0.3);
+        }
+        .btn:hover {
+            background-color: var(--primary-hover);
+            transform: translateY(-2px);
+        }
+        .btn-outline {
+            background-color: transparent;
+            color: var(--primary);
+            border: 1.5px solid var(--primary);
+            box-shadow: none;
+        }
+        .btn-outline:hover {
+            background-color: var(--accent);
+            color: var(--primary-hover);
+            border-color: var(--primary-hover);
+        }
+
+        /* --- Features (Grid) --- */
+        .section-title {
+            text-align: center;
+            font-size: 2.2rem;
+            margin-bottom: 16px;
+        }
+        .section-subtitle {
+            text-align: center;
+            margin-bottom: 60px;
+            color: #777;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 32px;
+            margin-bottom: 100px;
+        }
+        .feature-card {
+            background: var(--surface);
+            padding: 40px;
+            border-radius: 24px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.02);
+            transition: transform 0.3s ease;
+            border: 1px solid #f0f0f0;
+        }
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.04);
+        }
+        .feature-icon-wrapper {
+            width: 60px;
+            height: 60px;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            margin-bottom: 24px;
+        }
+        .icon-1 { background: #FDE8E9; color: #E07A5F; }
+        .icon-2 { background: #E9F1ED; color: #81B29A; }
+        .icon-3 { background: #FFF4E6; color: #F2CC8F; }
+        .icon-4 { background: #EAEBF2; color: #3D405B; }
+        
+        .feature-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 12px;
+        }
+        .feature-card p {
+            font-size: 0.95rem;
+            color: #666;
+        }
+
+        /* --- Pricing/Model --- */
+        .pricing-section {
+            background-color: var(--surface);
+            border-radius: 40px;
+            padding: 80px 40px;
+            margin-bottom: 100px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.02);
+        }
+        .pricing-cards {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 50px;
+        }
+        .price-card {
+            flex: 1;
+            max-width: 400px;
+            padding: 40px;
+            border-radius: 24px;
+            border: 1px solid #eee;
+            position: relative;
+        }
+        .price-card.popular {
+            background-color: var(--accent);
+            border-color: transparent;
+        }
+        .badge {
+            position: absolute;
+            top: -15px;
+            right: 30px;
+            background: var(--primary);
+            color: white;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        .price-card h3 { font-size: 1.6rem; margin-bottom: 16px; }
+        .price-card p { margin-bottom: 30px; color: #555; }
+        .price-list { list-style: none; margin-bottom: 30px; }
+        .price-list li {
+            margin-bottom: 12px;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            font-size: 0.95rem;
+        }
+        .price-list li::before {
+            content: '✓';
+            color: var(--secondary);
+            font-weight: bold;
+        }
+
+        /* --- Call to Action (Perdana) --- */
+        .cta-section {
+            background: linear-gradient(135deg, var(--secondary) 0%, #8ca691 100%);
+            border-radius: 32px;
+            padding: 70px 40px;
+            text-align: center;
+            color: white;
+            margin-bottom: 80px;
+            position: relative;
+            overflow: hidden;
+        }
+        .cta-section h2 {
+            color: white;
+            font-size: 2.4rem;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 2;
+        }
+        .cta-section p {
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto 30px auto;
+            position: relative;
+            z-index: 2;
+        }
+        .cta-section .btn {
+            background-color: var(--surface);
+            color: var(--secondary);
+            position: relative;
+            z-index: 2;
+        }
+        .cta-section .btn:hover {
+            background-color: var(--bg-color);
+            transform: translateY(-2px);
+        }
+        
+        /* Decorative element CTA */
+        .cta-blob {
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            top: -100px;
+            left: -50px;
+            z-index: 1;
+        }
+        .cta-blob-2 {
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            bottom: -50px;
+            right: 50px;
+            z-index: 1;
+        }
+
+        /* --- Footer --- */
+        footer {
+            padding: 40px 0;
+            border-top: 1px solid #eaeaea;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .footer-logo {
+            font-family: 'Lora', serif;
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--text-heading);
+            border: 1px solid var(--text-heading);
+            padding: 8px 16px;
+            display: inline-block;
+            transform: rotate(-2deg);
+        }
+        .footer-text {
+            font-size: 0.9rem;
+            color: #888;
+        }
+
+        /* --- Responsive --- */
+        @media (max-width: 900px) {
+            .hero { flex-direction: column; text-align: center; }
+            .hero-content { padding-right: 0; }
+            .features-grid { grid-template-columns: 1fr; }
+            .pricing-cards { flex-direction: column; align-items: center; }
+            .price-card { width: 100%; max-width: 100%; }
+        }
+        @media (max-width: 600px) {
+            .hero-content h1 { font-size: 2.4rem; }
+            footer { flex-direction: column; gap: 20px; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <a href="#" class="logo">Kit<span>Belajar.</span></a>
+        </header>
+
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-content">
+                <span class="hero-tag">Katering Belajar Anak</span>
+                <h1>Kurangi Screen Time,<br>Mulai Eksplorasi Nyata.</h1>
+                <p>Subscription box edukasi interaktif yang mengirimkan keajaiban sains dan kreativitas langsung ke depan pintu Anda. Disiapkan khusus untuk ibu karier yang ingin memberikan aktivitas terbaik tanpa perlu repot.</p>
+                <div style="display: flex; gap: 16px; flex-wrap: wrap; justify-content: flex-start;">
+                    <a href="#produk" class="btn">Lihat Koleksi Box</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <!-- Gambar estetis dari Unsplash sebagai ilustrasi anak bereksperimen -->
+                <img src="https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&w=800&q=80" alt="Anak bereksperimen sains dengan bahagia">
+            </div>
+        </section>
+
+        <!-- Kenapa Memilih Kami (Features) -->
+        <section id="produk">
+            <h2 class="section-title">Dirancang untuk Tumbuh Kembang, Disiapkan untuk Kenyamanan Anda</h2>
+            <p class="section-subtitle">Kami tahu Anda sibuk. Oleh karena itu, kami merangkum semua yang dibutuhkan anak untuk belajar secara kreatif dalam satu kotak estetis.</p>
+            
+            <div class="features-grid">
+                <!-- Feature 1 -->
+                <div class="feature-card">
+                    <div class="feature-icon-wrapper icon-1">📦</div>
+                    <h3>Paket Fisik Bulanan</h3>
+                    <p>Setiap kotak berisi bahan baku premium siap pakai untuk membuat 3 proyek kreatif. Dari gunung berapi mini, merakit robot sederhana, hingga berkebun hidroponik.</p>
+                </div>
+                <!-- Feature 2 -->
+                <div class="feature-card">
+                    <div class="feature-icon-wrapper icon-2">✨</div>
+                    <h3>Karya Nyata Penuh Bangga</h3>
+                    <p>Anak menghasilkan mainan edukatif atau karya sains buatannya sendiri. Tidak hanya sekadar bermain, tapi menciptakan karya yang bisa dipajang di rumah.</p>
+                </div>
+                <!-- Feature 3 -->
+                <div class="feature-card">
+                    <div class="feature-icon-wrapper icon-3">📱</div>
+                    <h3>Akses Mentor Digital</h3>
+                    <p>Cukup scan QR Code di dalam box, dan anak Anda akan dipandu langkah demi langkah melalui video interaktif bersama kakak pendamping yang ramah.</p>
+                </div>
+                <!-- Feature 4 -->
+                <div class="feature-card">
+                    <div class="feature-icon-wrapper icon-4">🌿</div>
+                    <h3>Bebas Repot untuk Ibu</h3>
+                    <p>Ucapkan selamat tinggal pada kerepotan mencari bahan praktikum satu per satu. Semua material sudah ditakar presisi, aman, dan siap digunakan.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Pricing / Model Bisnis -->
+        <section class="pricing-section">
+            <h2 class="section-title">Pilih Perjalanan Belajar Si Kecil</h2>
+            <p class="section-subtitle">Fleksibilitas penuh untuk mendukung proses eksplorasi anak, baik berlangganan maupun untuk hadiah spesial.</p>
+            
+            <div class="pricing-cards">
+                <!-- Card 1 -->
+                <div class="price-card popular">
+                    <div class="badge">Terfavorit</div>
+                    <h3>Langganan Bulanan</h3>
+                    <p>Kejutan tema edukasi yang berbeda setiap bulannya, dikirim otomatis ke rumah.</p>
+                    <ul class="price-list">
+                        <li>Tema baru setiap bulan</li>
+                        <li>Bahan eksperimen lengkap</li>
+                        <li>Akses video mentor eksklusif</li>
+                        <li>Gratis ongkos kirim</li>
+                    </ul>
+                    <a href="#" class="btn" style="width: 100%; text-align: center;">Mulai Berlangganan</a>
+                </div>
+                <!-- Card 2 -->
+                <div class="price-card">
+                    <h3>Pembelian Satuan</h3>
+                    <p>Cocok untuk mencoba kotak pertama kami, atau sebagai kado ulang tahun yang edukatif.</p>
+                    <ul class="price-list">
+                        <li>Pilih tema sesuai keinginan</li>
+                        <li>Bahan eksperimen lengkap</li>
+                        <li>Akses video mentor eksklusif</li>
+                        <li>Packaging pita spesial (opsional)</li>
+                    </ul>
+                    <a href="#" class="btn btn-outline" style="width: 100%; text-align: center;">Beli Satuan</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA / Purwarupa -->
+        <section class="cta-section">
+            <div class="cta-blob"></div>
+            <div class="cta-blob-2"></div>
+            <h2>Langkah Awal: Box "Detektif Sains Cilik"</h2>
+            <p>Jadilah yang pertama mencoba! Kami merilis <strong>20 paket purwarupa eksklusif</strong> dengan bahan baku lokal premium yang 100% aman untuk anak.</p>
+            <p><em>*Penawaran spesial khusus untuk komunitas Mom Influencers.</em></p>
+            <br>
+            <a href="#" class="btn">Ambil Kuota Purwarupa Anda</a>
+        </section>
+
+        <!-- Footer -->
+        <footer>
+            <div class="footer-logo">Box Education</div>
+            <div class="footer-text">
+                &copy; 2026 Katering Belajar Anak (KitBelajar). Hak cipta dilindungi.
+            </div>
+        </footer>
+    </div>
+
+</body>
+</html>
